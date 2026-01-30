@@ -1,0 +1,116 @@
+{
+  "failed_password": {
+    "pattern": "Failed password",
+    "severity": "high",
+    "category": "ssh",
+    "description": "Başarısız SSH giriş denemesi"
+  },
+  "invalid_user": {
+    "pattern": "Invalid user",
+    "severity": "high",
+    "category": "ssh",
+    "description": "Var olmayan kullanıcı ile SSH denemesi"
+  },
+  "ssh_root_login": {
+    "pattern": "Accepted password for root",
+    "severity": "critical",
+    "category": "privilege",
+    "description": "Root kullanıcı ile başarılı SSH girişi"
+  },
+  "sudo_used": {
+    "pattern": "sudo:",
+    "severity": "medium",
+    "category": "privilege",
+    "description": "Sudo komutu kullanıldı"
+  },
+  "su_attempt": {
+    "pattern": "su:",
+    "severity": "high",
+    "category": "privilege",
+    "description": "Kullanıcı su ile yetki yükseltmeye çalıştı"
+  },
+  "user_added": {
+    "pattern": "useradd",
+    "severity": "high",
+    "category": "persistence",
+    "description": "Sisteme yeni kullanıcı eklendi"
+  },
+  "user_deleted": {
+    "pattern": "userdel",
+    "severity": "high",
+    "category": "persistence",
+    "description": "Kullanıcı silindi"
+  },
+  "cron_modified": {
+    "pattern": "CRON",
+    "severity": "high",
+    "category": "persistence",
+    "description": "Cron job çalıştırıldı veya değiştirildi"
+  },
+  "ufw_block": {
+    "pattern": "UFW BLOCK",
+    "severity": "low",
+    "category": "firewall",
+    "description": "Firewall tarafından paket engellendi"
+  },
+  "iptables_change": {
+    "pattern": "iptables",
+    "severity": "high",
+    "category": "firewall",
+    "description": "iptables kuralları değiştirildi"
+  },
+  "kernel_error": {
+    "pattern": "kernel:",
+    "severity": "critical",
+    "category": "system",
+    "description": "Kernel seviyesinde hata"
+  },
+  "disk_error": {
+    "pattern": "I/O error",
+    "severity": "high",
+    "category": "system",
+    "description": "Disk G/Ç hatası"
+  },
+  "process_killed": {
+    "pattern": "Killed process",
+    "severity": "medium",
+    "category": "resource",
+    "description": "Sistem bir süreci zorla sonlandırdı"
+  },
+  "wget_used": {
+    "pattern": "wget",
+    "severity": "medium",
+    "category": "malware",
+    "description": "Dosya indirme komutu çalıştırıldı"
+  },
+  "curl_used": {
+    "pattern": "curl",
+    "severity": "medium",
+    "category": "malware",
+    "description": "curl ile dış bağlantı kuruldu"
+  },
+  "nc_used": {
+    "pattern": "nc ",
+    "severity": "high",
+    "category": "network",
+    "description": "Netcat kullanımı tespit edildi"
+  },
+  "chmod_777": {
+    "pattern": "chmod 777",
+    "severity": "high",
+    "category": "integrity",
+    "description": "Tehlikeli dosya izinleri verildi"
+  },
+  "hidden_file": {
+    "pattern": "/\\.",
+    "severity": "medium",
+    "category": "evasion",
+    "description": "Gizli dosya/dizin erişimi"
+  },
+  "log_cleared": {
+    "pattern": "log cleared",
+    "severity": "critical",
+    "category": "evasion",
+    "description": "Loglar silinmiş olabilir"
+  }
+}

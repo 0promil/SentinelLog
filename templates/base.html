@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}YUSUF BARIŞ DURMUŞ{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {% block head_extras %}{% endblock %}
+</head>
+
+<body>
+
+    <div id="login-overlay">
+        <div class="login-card">
+            <h2 style="margin-bottom: 2rem;">YUSUF BARIŞ DURMUŞ</h2>
+            <input type="text" id="username" placeholder="Kullanıcı Adı" value="admin">
+            <input type="password" id="password" placeholder="Şifre" value="admin123">
+            <button onclick="handleLogin()">Giriş Yap</button>
+            <p id="login-error" style="color: var(--accent-red); margin-top: 1rem; display: none;">Giriş başarısız.</p>
+        </div>
+    </div>
+
+
+    <nav class="sidebar">
+        <div class="logo">
+            YUSUF BARIŞ DURMUŞ
+        </div>
+
+        <ul class="nav-links">
+            <a href="/" style="text-decoration:none; color:inherit;">
+                <li class="nav-item {% if request.url.path == '/' %}active{% endif %}">Dashboard</li>
+            </a>
+            <a href="/logs" style="text-decoration:none; color:inherit;">
+                <li class="nav-item {% if request.url.path == '/logs' %}active{% endif %}">Olay Akışı</li>
+            </a>
+            <a href="/rules" style="text-decoration:none; color:inherit;">
+                <li class="nav-item {% if request.url.path == '/rules' %}active{% endif %}">Kural Yönetimi</li>
+            </a>
+            <a href="/reports" style="text-decoration:none; color:inherit;">
+                <li class="nav-item {% if request.url.path == '/reports' %}active{% endif %}">Raporlar</li>
+            </a>
+        </ul>
+        <div style="margin-top: auto;">
+            <div class="nav-item" onclick="handleLogout()">Oturumu Kapat</div>
+        </div>
+    </nav>
+
+
+    <main class="main-content">
+        <header>
+            <h1 id="view-title">{% block page_title %}Dashboard{% endblock %}</h1>
+            <div class="user-profile">
+                <span id="risk-badge" class="severity-pill sev-low">System OK</span>
+                <span id="display-user">Admin</span>
+            </div>
+        </header>
+
+        <div id="content-area" class="animate-fade">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <script src="/static/app.js"></script>
+    <script>
+
+        const PAGE_ID = "{% block page_id %}dashboard{% endblock %}";
+    </script>
+</body>
+
+</html>

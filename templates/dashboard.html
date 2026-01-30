@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block page_title %}Dashboard{% endblock %}
+{% block page_id %}dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-grid">
+    <div class="stat-card">
+        <div class="stat-label">Toplam Olay</div>
+        <div class="stat-value" id="stat-total">0</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Kritik Tehditler</div>
+        <div class="stat-value risk-critical" id="stat-critical">0</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Aktif Kurallar</div>
+        <div class="stat-value" id="stat-rules">0</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Risk Seviyesi</div>
+        <div class="stat-value" id="stat-risk">LOW</div>
+    </div>
+</div>
+
+<div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+    <div class="card">
+        <div class="card-title">Son Olaylar <span
+                style="font-size: 0.8rem; font-weight: 400; color: var(--accent-blue);">Canlı Akış
+                Aktif</span></div>
+        <table id="recent-events-table">
+            <thead>
+                <tr>
+                    <th>Zaman</th>
+                    <th>Kural</th>
+                    <th>Severity</th>
+                    <th>IP Adresi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Veri buraya gelecek -->
+            </tbody>
+        </table>
+    </div>
+    <div class="card">
+        <div class="card-title">Şiddet Dağılımı</div>
+        <canvas id="severity-chart"></canvas>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+services:
+  log-sentinel:
+    build: .
+    image: yusuf-baris-durmus/github-0promil
+    container_name: github_0promil
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./reports:/app/reports
+      - ./log_analyzer.db:/app/log_analyzer.db
+
+      - /var/log:/var/log:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block page_title %}Kural Yönetimi{% endblock %}
+{% block page_id %}rules{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-title">Aktif Kurallar</div>
+    <table id="rules-table">
+        <thead>
+            <tr>
+                <th>Kural Adı</th>
+                <th>Pattern</th>
+                <th>Severity</th>
+                <th>Durum</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+{% endblock %}

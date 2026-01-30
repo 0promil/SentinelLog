@@ -1,0 +1,10 @@
+{
+    "log_files": [
+        "/var/log/auth.log",
+        "/var/log/syslog",
+        "/var/log/nginx/access.log",
+        "/var/log/ufw.log"
+    ],
+    "reports_dir": "reports",
+    "alert_threshold": 5
+}

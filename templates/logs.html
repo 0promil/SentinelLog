@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block page_title %}Olay Akışı{% endblock %}
+{% block page_id %}logs{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-title">
+        Detaylı Olay Listesi
+        <select id="severity-filter" onchange="loadLogs()"
+            style="background: var(--bg-color); color: white; border: 1px solid var(--border-color); padding: 0.2rem 1rem; border-radius: 4px;">
+            <option value="">Tümü</option>
+            <option value="CRITICAL">Critical</option>
+            <option value="HIGH">High</option>
+            <option value="MEDIUM">Medium</option>
+            <option value="LOW">Low</option>
+        </select>
+        <button onclick="exportLogs()"
+            style="margin-left: 1rem; padding: 0.2rem 1rem; border-radius: 4px; background: var(--accent-green); color: white; border: none; cursor: pointer;">
+            Export CSV
+        </button>
+    </div>
+    <table id="all-logs-table">
+        <thead>
+            <tr>
+                <th>Zaman</th>
+                <th>Kategori</th>
+                <th>Kural</th>
+                <th>IP</th>
+                <th>Mesaj</th>
+                <th>Severity</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+{% endblock %}
