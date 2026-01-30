@@ -10,6 +10,29 @@ Bu proje, Linux sistem loglarını (auth.log, syslog vb.) gerçek zamanlı izley
 *   **Güvenli Erişim:** Rol tabanlı (Admin/User) kullanıcı yönetimi.
 *   **Raporlama:** Geçmiş olayların CSV formatında dışa aktarımı log bilgileri (hangi kullanıcılar tarafından CSV dosyası çıkarıldı).
 
+```
+┌─────────────────┐
+│   CLI Engine    │ ──┐
+│                 │   │
+└─────────────────┘   │
+                      ├──► SQLite DB ◄──┐
+┌─────────────────┐   │                 │
+│  Live Tailer    │ ──┘                 │
+│                 │                     │
+└─────────────────┘                     │
+                                        │
+┌─────────────────┐                     │
+│  FastAPI Server │ ────────────────────┘
+│                 │
+└─────────────────┘
+        │
+        ▼
+┌─────────────────┐
+│  Web Dashboard  │
+│                 │
+└─────────────────┘
+```
+
 ## Kurulum
 
 Sistemi çalıştırmanın en kolay yolu Docker kullanmaktır.
@@ -36,6 +59,14 @@ Sistemi çalıştırmanın en kolay yolu Docker kullanmaktır.
 
 (İlk kurulumda bu kullanıcı otomatik oluşturulur. Giriş yaptıktan sonra yeni kullanıcılar ekleyebilirsiniz.)
 
+### Web Paneli
+
+1. http://localhost:8000 adresine gidin
+2. Kullanıcı: `admin`, Şifre: `admin123`
+3. Dashboard'da sistem durumunu görüntüleyin
+4. "Olay Akışı" sekmesinden detaylı logları inceleyin
+5. "Kural Yönetimi" ile kuralları aktif/pasif yapın
+
 ## Manuel Kurulum (Geliştirme Amaçlı)
 
 Docker kullanmadan çalıştırmak isterseniz:
@@ -61,6 +92,15 @@ Docker kullanmadan çalıştırmak isterseniz:
         python api.py
         ```
 
+## Güvenlik Notları
+
+**ÜRETİM İÇİN YAPILMASI GEREKENLER:**
+1. `api.py` içindeki `SECRET_KEY` değiştirin
+2. Admin şifresini değiştirin
+3. HTTPS kullanın (reverse proxy ile)
+4. Firewall kuralları ekleyin (port 8000)
+5. Rate limiting değerlerini ayarlayın
+
 ## Proje Yapısı
 
 *   **api.py:** Web sunucusu ve API (FastAPI).
@@ -70,5 +110,10 @@ Docker kullanmadan çalıştırmak isterseniz:
 *   **rules.json:** Tespit kurallarının tanımlandığı dosya.
 *   **config.json:** Log dosyalarının yolları ve ayarlar.
 
+## Katkıda Bulunma
+
+Bu proje akademik amaçlıdır. Önerileriniz için issue açabilirsiniz.
+
 ---
 Geliştirici: YUSUF BARIŞ DURMUŞ
+
